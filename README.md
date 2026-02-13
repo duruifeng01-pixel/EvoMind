@@ -31,6 +31,8 @@
 - `android/ARCHITECTURE.md` 安卓工程包结构与开发约定
 - `docs/11-可部署版本说明.md` 当前可运行交付范围与部署说明
 - `backend/` Spring Boot 可运行后端源码
+- `backend/.mvn/settings.xml` Maven 国内镜像配置（方案A）
+- `backend/run-tests-with-mirror.sh` 使用国内镜像执行测试
 - `android-app/` Android Studio 可构建客户端工程骨架
 
 ## 下一步研发建议
