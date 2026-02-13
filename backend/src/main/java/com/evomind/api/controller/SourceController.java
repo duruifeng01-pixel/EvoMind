@@ -1,5 +1,6 @@
 package com.evomind.api.controller;
 
+import com.evomind.api.integration.OcrSdkClient;
 import com.evomind.api.model.*;
 import com.evomind.api.store.InMemoryStore;
 import jakarta.validation.Valid;
@@ -12,18 +13,16 @@ import java.util.List;
 public class SourceController {
 
     private final InMemoryStore store;
+    private final OcrSdkClient ocrSdkClient;
 
-    public SourceController(InMemoryStore store) {
+    public SourceController(InMemoryStore store, OcrSdkClient ocrSdkClient) {
         this.store = store;
+        this.ocrSdkClient = ocrSdkClient;
     }
 
     @PostMapping("/ocr/recognize")
     public ApiResponse<OcrRecognizeResponse> recognize(@Valid @RequestBody OcrRecognizeRequest req) {
-        List<OcrRecognizeResponse.SourceCandidate> candidates = List.of(
-                new OcrRecognizeResponse.SourceCandidate("科技博主A", "https://example.cn/a"),
-                new OcrRecognizeResponse.SourceCandidate("产品观察B", "https://example.cn/b")
-        );
-        return ApiResponse.ok(new OcrRecognizeResponse(800, candidates, "AI生成，仅供参考"));
+        return ApiResponse.ok(ocrSdkClient.recognize(req.platform(), req.imageBase64()));
     }
 
     @PostMapping("/import")

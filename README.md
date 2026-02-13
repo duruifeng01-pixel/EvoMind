@@ -30,6 +30,7 @@
 - `docs/10-中文文案与交互规范.md` 全中文文案与交互规范
 - `android/ARCHITECTURE.md` 安卓工程包结构与开发约定
 - `docs/11-可部署版本说明.md` 当前可运行交付范围与部署说明
+- `docs/12-上线发行差距清单.md` 当前版本到正式上线版的差距与待办
 - `backend/` Spring Boot 可运行后端源码
 - `backend/.mvn/settings.xml` Maven 国内镜像配置（方案A）
 - `backend/run-tests-with-mirror.sh` 使用国内镜像执行测试

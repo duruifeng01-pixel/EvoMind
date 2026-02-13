@@ -1,5 +1,6 @@
 package com.evomind.api.controller;
 
+import com.evomind.api.integration.AiSdkClient;
 import com.evomind.api.model.*;
 import com.evomind.api.store.InMemoryStore;
 import jakarta.validation.Valid;
@@ -10,14 +11,16 @@ import org.springframework.web.bind.annotation.*;
 public class DiscussionController {
 
     private final InMemoryStore store;
+    private final AiSdkClient aiSdkClient;
 
-    public DiscussionController(InMemoryStore store) {
+    public DiscussionController(InMemoryStore store, AiSdkClient aiSdkClient) {
         this.store = store;
+        this.aiSdkClient = aiSdkClient;
     }
 
     @PostMapping("/daily-question/generate")
     public ApiResponse<DailyQuestionResponse> generate() {
-        return ApiResponse.ok(store.dailyQuestion());
+        return ApiResponse.ok(aiSdkClient.dailyQuestion());
     }
 
     @PostMapping("/{id}/reply")
