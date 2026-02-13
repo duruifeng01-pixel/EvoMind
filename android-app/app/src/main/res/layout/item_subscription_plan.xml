@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- 计划名称和价格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/planNameText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="计划名称"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/planPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥0"
+                android:textSize="18sp"
+                android:textColor="@color/material_blue_700"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- 计划描述 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/planDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="计划描述"
+            android:textSize="14sp" />
+
+        <!-- Token额度 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tokenQuotaText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="Token额度"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- 功能列表 -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/featuresText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="功能列表"
+            android:textSize="13sp" />
+
+        <!-- 订阅按钮 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/subscribeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="立即订阅"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 搜索工具栏 -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 搜索框 -->
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:queryHint="搜索节点..."
+                    app:searchIcon="@android:drawable/ic_menu_search"
+                    app:closeIcon="@android:drawable/ic_menu_close_clear_cancel" />
+
+                <!-- 搜索导航按钮 -->
+                <ImageButton
+                    android:id="@+id/btnSearchPrev"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_media_previous"
+                    android:visibility="gone"
+                    android:contentDescription="上一个结果" />
+
+                <ImageButton
+                    android:id="@+id/btnSearchNext"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@android:drawable/ic_media_next"
+                    android:visibility="gone"
+                    android:contentDescription="下一个结果" />
+
+                <!-- 搜索结果计数 -->
+                <TextView
+                    android:id="@+id/searchResultText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="0/0"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 思维导图视图 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.evomind.app.mindmap.MindMapCanvasView
+            android:id="@+id/mindMapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- 浮动操作按钮 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnResetView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="重置视图"
+                android:layout_marginBottom="8dp"
+                app:icon="@android:drawable/ic_menu_revert" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnToggleFullscreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全屏"
+                app:icon="@android:drawable/ic_menu_view" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
