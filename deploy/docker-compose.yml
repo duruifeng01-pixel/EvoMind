@@ -1,0 +1,33 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: evomind
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ../sql/server_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/backend/Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/evomind
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_REDIS_HOST: redis
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
