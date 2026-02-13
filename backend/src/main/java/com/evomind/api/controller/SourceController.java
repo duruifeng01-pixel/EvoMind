@@ -19,12 +19,16 @@ public class SourceController {
 
     @PostMapping("/ocr/recognize")
     public ApiResponse<OcrRecognizeResponse> recognize(@Valid @RequestBody OcrRecognizeRequest req) {
-        // 模拟OCR识别结果，后续替换为国内OCR SDK
         List<OcrRecognizeResponse.SourceCandidate> candidates = List.of(
                 new OcrRecognizeResponse.SourceCandidate("科技博主A", "https://example.cn/a"),
                 new OcrRecognizeResponse.SourceCandidate("产品观察B", "https://example.cn/b")
         );
         return ApiResponse.ok(new OcrRecognizeResponse(800, candidates, "AI生成，仅供参考"));
+    }
+
+    @PostMapping("/import")
+    public ApiResponse<List<SourceItem>> importSources(@Valid @RequestBody SourceImportRequest req) {
+        return ApiResponse.ok(store.importSources(req));
     }
 
     @PostMapping("/manual")
