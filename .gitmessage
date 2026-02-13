@@ -1,0 +1,20 @@
+# <type>(<scope>): <subject>
+# 
+# <body>
+# 
+# <footer>
+#
+# Type: feat, fix, docs, style, refactor, perf, test, chore, ci
+# Scope: ui, data, domain, di, utils, config
+# Subject: 简短描述（不超过50字符，使用中文）
+# Body: 详细说明修改内容（可选，每行不超过72字符）
+# Footer: 关闭Issue等（可选，如 Closes #123）
+#
+# 示例:
+# feat(ui): 添加用户登录页面
+#
+# - 实现手机号验证码登录UI
+# - 集成验证码发送接口
+# - 添加登录状态管理
+#
+# Closes #10

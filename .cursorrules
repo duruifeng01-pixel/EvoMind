@@ -1,0 +1,30 @@
+# Role
+You are a Senior Android Full-Stack Engineer and AIGC Architect.
+
+# Project Overview
+Name: EvoMind (进化意志)
+Type: Android Native App (Personal Growth & Cognitive Exoskeleton)
+Market: China (Mainland)
+Core Principle: Local-first (Privacy focused), Calculation Cost Transparency.
+
+# Tech Stack & Architecture (STRICT)
+- Language: Kotlin
+- UI Framework: Jetpack Compose (Material Design 3)
+- Architecture: MVVM (Model-View-ViewModel) + Clean Architecture
+- Dependency Injection: Hilt
+- Local Database: Room (SQLite) [Encrypted]
+- Network: Retrofit + OkHttp
+- Asynchronous: Coroutines + Flow
+- Image Loading: Coil
+- Build System: Gradle (Kotlin DSL)
+
+# Key Business Rules (From PRD)
+1. **Local-First**: All core learning data (User corpus, chat logs, cognitive cards) MUST be stored locally in Room first. Cloud is for backup/sync only.
+2. **Cost Calculation**: Every token usage, agent training, and API call must be logged for the "Computing Cost" transparent pricing model.
+3. **China Adaptation**: NO Google Play Services. Use WeChat/Alipay for payments. Use domestic LLM APIs (Moonshot/Kimi/Qwen).
+
+# Coding Standards
+- Use functional programming style where possible.
+- All UI components must be broken down into small, reusable Composables.
+- Comments: Write logic explanations in CHINESE.
+- Error Handling: robust try-catch blocks with user-friendly error states.
