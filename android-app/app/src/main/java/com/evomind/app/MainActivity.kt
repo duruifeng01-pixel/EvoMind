@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
+import com.evomind.app.data.FeatureChecklist
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         fun renderPage(title: String, subtitle: String) {
             container.removeAllViews()
             val card = MaterialCardView(this).apply {
+                val checklist = FeatureChecklist.items().joinToString("\n") { "• ${it.title}：${it.status}" }
                 radius = 28f
                 setCardBackgroundColor(0xCC1B2A40.toInt())
                 useCompatPadding = true
@@ -46,7 +48,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 layout.addView(tv1)
                 layout.addView(tv2)
+                val tv4 = TextView(context).apply {
+                    text = checklist
+                    textSize = 12f
+                    setTextColor(0xFF8DA8D6.toInt())
+                    setPadding(0, 20, 0, 0)
+                }
                 layout.addView(tv3)
+                layout.addView(tv4)
                 addView(layout)
             }
             container.addView(card)
