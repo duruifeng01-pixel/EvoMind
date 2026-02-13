@@ -41,3 +41,44 @@
 1. 先落地账号、引导、信息源导入、认知卡片主流程（MVP）。
 2. 再接入支付、订阅、算力成本账本和权益系统。
 3. 最后接入 Agent 训练、能力报告和小组互助。
+
+## ✅ OCR模块集成完成（2026-02-14）
+
+百度OCR已成功集成，支持微信、小红书、知乎、微博等多平台素材识别。
+
+### 核心组件
+- **BaiduOcrService**: OCR核心服务（app/src/main/java/com/evomind/app/ocr/）
+- **ImageUtils**: 图片预处理工具（压缩、裁剪、旋转）
+- **平台适配**: 支持微信/小红书/知乎/微博专用裁剪策略
+- **数据层**: Room数据库 + Repository模式
+- **测试界面**: OcrTestActivity（可直接测试）
+
+### 配置步骤
+
+1. **申请百度AI账号**：https://ai.baidu.com/
+2. **创建应用**，获取APP_ID、API_KEY、SECRET_KEY
+3. **修改密钥配置**：在 `BaiduOcrService.kt` 中填入：
+```kotlin
+private const val APP_ID = "your_app_id"
+private const val API_KEY = "your_api_key"
+private const val SECRET_KEY = "your_secret_key"
+```
+
+### 测试方法
+
+1. 运行应用，选择图片
+2. 选择平台类型（微信/小红书/知乎/微博）
+3. 点击"开始OCR识别"
+4. 查看识别结果和清洗后的文本
+
+### 关键特性
+- ✅ 自动裁剪平台特定区域（去除干扰元素）
+- ✅ 文本智能清洗（过滤时间戳、昵称等）
+- ✅ 置信度评分和错误重试（最多3次）
+- ✅ Room数据库存储识别历史
+- ✅ 支持批量处理
+
+### 下一步
+完成OCR配置后，可继续集成Deepseek AIGC，生成认知卡片。
+
+查看详细配置指南：OCR_SETUP_GUIDE.md（位于本项目目录）
